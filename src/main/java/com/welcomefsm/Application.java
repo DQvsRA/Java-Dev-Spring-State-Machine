@@ -12,13 +12,14 @@ public class Application
 {
     static public enum States {
         INITIAL, STARTUP, PREPARING, READY,
-        SERVICES_STARTUP, SERVICES_READY,
+        STARTUP_SERVICES, SERVICES_READY,
+        STARTUP_WORKER, WORKER_READY,
         END
     }
 
     static public enum Events {
         STARTUP, PREPARE,
-        READY, SERVICES_READY
+        WORKER_READY, SERVICES_READY
     }
 
     static public void main(String[] args) throws Exception
