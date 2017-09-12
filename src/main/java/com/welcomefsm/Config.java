@@ -40,6 +40,7 @@ public class Config
                 .state(States.INITIAL, initialAction)
                 .state(States.STARTUP, startupAction)
                 .state(States.PREPARING)
+                .state(States.READY, readyAction)
                 .and()
             .withStates()
                 .parent(States.PREPARING).initial(States.STARTUP_WORKER)
@@ -51,9 +52,9 @@ public class Config
                     .state(States.STARTUP_SERVICES, servicesStartupAction)
                     .state(States.SERVICES_READY)
                     .and()
-            .withStates().initial(States.READY)
-                .state(States.READY, readyAction)
-                .end(States.END)
+            .withStates()
+                .parent(States.READY)
+                    .end(States.END)
         ;
 
         builder.configureTransitions()
